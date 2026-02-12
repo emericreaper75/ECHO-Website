@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Browse the ECHO Club photo gallery - events, projects, workshops, and memories from our vibrant community.">
+    <title>Gallery | ECHO Club</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        .gallery-filter-bar {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: var(--spacing-sm);
+            padding: var(--spacing-lg) 0;
+        }
+
+        .filter-btn {
+            padding: 0.5rem 1.25rem;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            background: transparent;
+            color: rgba(255, 255, 255, 0.8);
+            border-radius: var(--border-radius-sm);
+            font-weight: 600;
+            font-size: var(--font-size-sm);
+            cursor: pointer;
+            transition: all 0.2s;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: white;
+        }
+
+        .gallery-grid-expanded {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: var(--spacing-md);
+        }
+
+        .gallery-card {
+            position: relative;
+            border-radius: var(--border-radius-sm);
+            overflow: hidden;
+            aspect-ratio: 16/10;
+            cursor: pointer;
+            background: var(--bg-secondary);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .gallery-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .gallery-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .gallery-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-card-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1rem 1.25rem;
+            background: linear-gradient(transparent, rgba(26, 35, 50, 0.9));
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+
+        .gallery-card:hover .gallery-card-overlay {
+            transform: translateY(0);
+        }
+
+        .gallery-card-overlay h4 {
+            color: white;
+            font-size: var(--font-size-sm);
+            margin-bottom: 0.15rem;
+        }
+
+        .gallery-card-overlay p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.75rem;
+        }
+
+        .gallery-card-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--accent);
+            color: white;
+            padding: 0.2rem 0.6rem;
+            border-radius: 3px;
+            font-size: 0.65rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            z-index: 2;
+        }
+
+        .gallery-section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .gallery-count {
+            color: var(--text-muted);
+            font-size: var(--font-size-sm);
+        }
+
+        /* Lightbox improvements */
+        .lightbox-img {
+            max-width: 90vw;
+            max-height: 85vh;
+            border-radius: var(--border-radius-sm);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .lightbox-caption {
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: 0.75rem;
+            font-size: var(--font-size-sm);
+        }
+
+        @media (max-width: 768px) {
+            .gallery-grid-expanded {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gallery-grid-expanded {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-text">ECHO</span>
+                <span class="logo-subtitle">Electronics & Communication Heuristic Organisation</span>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-dropdown">
+                    <a href="about.html" class="nav-link">About ▾</a>
+                    <div class="nav-dropdown-content">
+                        <a href="about.html">About Us</a>
+                        <a href="history.html">Our History</a>
+                    </div>
+                </li>
+                <li class="nav-dropdown">
+                    <a href="team.html" class="nav-link">People ▾</a>
+                    <div class="nav-dropdown-content">
+                        <a href="team.html">Staff & Faculty</a>
+                        <a href="members.html">Members</a>
+                        <a href="alumni.html">Alumni</a>
+                    </div>
+                </li>
+                <li><a href="events.html" class="nav-link">Events</a></li>
+                <li><a href="announcements.html" class="nav-link">News</a></li>
+                <li><a href="gallery.html" class="nav-link active">Gallery</a></li>
+
+                <li><a href="donations.html" class="nav-link">Donate</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            <button class="mobile-toggle" id="mobileToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <h1>Photo <span class="gradient-text">Gallery</span></h1>
+        <p>Capturing moments of innovation, learning, and community</p>
+    </section>
+
+    <!-- Gallery Filter -->
+    <section class="stats">
+        <div class="container">
+            <div class="gallery-filter-bar">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="events">Events</button>
+                <button class="filter-btn" data-filter="workshops">Workshops</button>
+                <button class="filter-btn" data-filter="projects">Projects</button>
+                <button class="filter-btn" data-filter="lab">Lab Life</button>
+                <button class="filter-btn" data-filter="competitions">Competitions</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Grid -->
+    <section class="features">
+        <div class="container">
+            <div class="gallery-section-header">
+                <h2 class="section-title" style="margin-bottom: 0;">Featured Moments</h2>
+                <span class="gallery-count" id="galleryCount">Showing 24 photos</span>
+            </div>
+            <div class="gallery-grid-expanded" id="galleryGrid">
+
+                <!-- ===== EVENTS ===== -->
+                <div class="gallery-card" data-category="events" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&h=400&fit=crop"
+                        alt="Tech conference with audience" loading="lazy">
+                    <span class="gallery-card-badge">Events</span>
+                    <div class="gallery-card-overlay">
+                        <h4>Tech Summit 2025</h4>
+                        <p>Keynote session with 400+ attendees in the main auditorium</p>
+                    </div>
+                </div>
+                <div class="gallery-card" data-category="events" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=600&h=400&fit=crop"
+                        alt="Speaker at podium" loading="lazy">
+                    <span class="gallery-card-badge">Events</span>
+                    <div class="gallery-card-overlay">
+                        <h4>Guest Lecture Series</h4>
+                        <p>Industry expert sharing insights on emerging technologies</p>
+                    </div>
+                </div>
+                <div class="gallery-card" data-category="events" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1591115765373-5207764f72e7?w=600&h=400&fit=crop"
+                        alt="Networking event" loading="lazy">
+                    <span class="gallery-card-badge">Events</span>
+                    <div class="gallery-card-overlay">
+                        <h4>Alumni Meet & Greet</h4>
+                        <p>Students reconnecting with alumni for career guidance</p>
+                    </div>
+                </div>
+                <div class="gallery-card" data-category="events" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=600&h=400&fit=crop"
+                        alt="Award ceremony" loading="lazy">
+                    <span class="gallery-card-badge">Events</span>
+                    <div class="gallery-card-overlay">
+                        <h4>Annual Award Ceremony</h4>
+                        <p>Recognizing outstanding members and project achievements</p>
+                    </div>
+                </div>
+                <div class="gallery-card" data-category="events" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=600&h=400&fit=crop"
+                        alt="Panel discussion" loading="lazy">
+                    <span class="gallery-card-badge">Events</span>
+                    <div class="gallery-card-overlay">
+                        <h4>Career Development Panel</h4>
+                        <p>Alumni panel discussing career paths in technology</p>
+                    </div>
+                </div>
+
+                <!-- ===== WORKSHOPS ===== -->
+                <div class="gallery-card" data-category="workshops" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&h=400&fit=crop"
+                        alt="Coding workshop" loading="lazy">
+                    <span class="gallery-card-badge">Workshops</span>
+                    <div class="gallery-card-overlay">
+                        <h4>AI & Machine Learning Workshop</h4>
+                        <p>Members coding neural networks during the hands-on session</p>
+                    </div>
+                </div>
+                <div class="gallery-card" data-category="workshops" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=600&h=400&fit=crop"
+                        alt="Electronics soldering workshop" loading="lazy">
+                    <span class="gallery-card-badge">Workshops</span>
+                    <div class="gallery-card-overlay">
+                        <h4>PCB Soldering Workshop</h4>
+                        <p>Learning professional soldering techniques for PCB assembly</p>
+                    </div>
+                </div>
+                <div class="gallery-card" data-category="workshops" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=600&h=400&fit=crop"
+                        alt="Group workshop discussion" loading="lazy">
+                    <span class="gallery-card-badge">Workshops</span>
+                    <div class="gallery-card-overlay">
+                        <h4>Web Development Bootcamp</h4>
+                        <p>Students learning full-stack development in an intensive session</p>
+                    </div>
+                </div>
+                <div class="gallery-card" data-category="workshops" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&h=400&fit=crop"
+                        alt="Workshop participants" loading="lazy">
+                    <span class="gallery-card-badge">Workshops</span>
+                    <div class="gallery-card-overlay">
+                        <h4>Arduino Programming Session</h4>
+                        <p>Beginners learning microcontroller programming with Arduino kits</p>
+                    </div>
+                </div>
+
+                <!-- ===== PROJECTS ===== -->
+                <div class="gallery-card" data-category="projects" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&h=400&fit=crop"
+                        alt="Circuit board close-up" loading="lazy">
+                    <span class="gallery-card-badge">Projects</span>
+                    <div class="gallery-card-overlay">
+                        <h4>Smart Irrigation Controller</h4>
+                        <p>Custom PCB designed for IoT-based agricultural monitoring</p>
+                    </div>
+                </div>
+                <div class="gallery-card" data-category="projects" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=600&h=400&fit=crop"
+                        alt="Robot project" loading="lazy">
+                    <span class="gallery-card-badge">Projects</span>
+                    <div class="gallery-card-overlay">
+                        <h4>Autonomous Robot</h4>
+                        <p>Line-following robot with PID control and computer vision</p>
+                    </div>
+                </div>
+                <div class="gallery-card" data-category="projects" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?w=600&h=400&fit=crop"
+                        alt="3D printing project" loading="lazy">
+                    <span class="gallery-card-badge">Projects</span>
+                    <div class="gallery-card-overlay">
+                        <h4>3D Printed Drone Frame</h4>
+                        <p>Custom-designed quadcopter frame printed in our fab center</p>
+                    </div>
+                </div>
+                <div class="gallery-card" data-category="projects" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1555664424-778a1e5e1b48?w=600&h=400&fit=crop"
+                        alt="IoT sensor setup" loading="lazy">
+                    <span class="gallery-card-badge">Projects</span>
+                    <div class="gallery-card-overlay">
+                        <h4>IoT Weather Station</h4>
+                        <p>Real-time environmental monitoring dashboard for campus</p>
+                    </div>
+                </div>
+                <div class="gallery-card" data-category="projects" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=600&h=400&fit=crop"
+                        alt="Code on screen" loading="lazy">
+                    <span class="gallery-card-badge">Projects</span>
+                    <div class="gallery-card-overlay">
+                        <h4>AI Attendance System</h4>
+                        <p>Facial recognition-based attendance tracking using deep learning</p>
+                    </div>
+                </div>
+
+                <!-- ===== LAB LIFE ===== -->
+                <div class="gallery-card" data-category="lab" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=600&h=400&fit=crop"
+                        alt="Electronics lab workbench" loading="lazy">
+                    <span class="gallery-card-badge">Lab Life</span>
+                    <div class="gallery-card-overlay">
+                        <h4>Electronics Lab</h4>
+                        <p>Our fully equipped workspace with oscilloscopes and tools</p>
+                    </div>
+                </div>
+                <div class="gallery-card" data-category="lab" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&h=400&fit=crop"
+                        alt="Student working with equipment" loading="lazy">
+                    <span class="gallery-card-badge">Lab Life</span>
+                    <div class="gallery-card-overlay">
+                        <h4>Late Night Build Session</h4>
+                        <p>Members working on projects during monthly build nights</p>
+                    </div>
+                </div>
+                <div class="gallery-card" data-category="lab" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1562408590-e32931084e23?w=600&h=400&fit=crop"
+                        alt="3D printer in action" loading="lazy">
+                    <span class="gallery-card-badge">Lab Life</span>
+                    <div class="gallery-card-overlay">
+                        <h4>Fabrication Center</h4>
+                        <p>3D printers and CNC machines producing project components</p>
+                    </div>
+                </div>
+                <div class="gallery-card" data-category="lab" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?w=600&h=400&fit=crop"
+                        alt="Team collaboration in lab" loading="lazy">
+                    <span class="gallery-card-badge">Lab Life</span>
+                    <div class="gallery-card-overlay">
+                        <h4>Team Collaboration</h4>
+                        <p>Members brainstorming and debugging together in the lab</p>
+                    </div>
+                </div>
+                <div class="gallery-card" data-category="lab" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&h=400&fit=crop"
+                        alt="Computer workstations" loading="lazy">
+                    <span class="gallery-card-badge">Lab Life</span>
+                    <div class="gallery-card-overlay">
+                        <h4>Development Workstations</h4>
+                        <p>High-performance computers for software development and simulation</p>
+                    </div>
+                </div>
+
+                <!-- ===== COMPETITIONS ===== -->
+                <div class="gallery-card" data-category="competitions" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=600&h=400&fit=crop"
+                        alt="Hackathon crowd" loading="lazy">
+                    <span class="gallery-card-badge">Competitions</span>
+                    <div class="gallery-card-overlay">
+                        <h4>Hackathon 2025</h4>
+                        <p>24-hour coding marathon with 200+ participants</p>
+                    </div>
+                </div>
+                <div class="gallery-card" data-category="competitions" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop"
+                        alt="Team presenting" loading="lazy">
+                    <span class="gallery-card-badge">Competitions</span>
+                    <div class="gallery-card-overlay">
+                        <h4>National Hackathon Champions</h4>
+                        <p>Our winning team presenting their IoT solution to judges</p>
+                    </div>
+                </div>
+                <div class="gallery-card" data-category="competitions" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600&h=400&fit=crop"
+                        alt="Students coding" loading="lazy">
+                    <span class="gallery-card-badge">Competitions</span>
+                    <div class="gallery-card-overlay">
+                        <h4>Code Sprint Challenge</h4>
+                        <p>Teams competing in a 6-hour algorithmic challenge</p>
+                    </div>
+                </div>
+                <div class="gallery-card" data-category="competitions" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1531746790095-e5995ffd4185?w=600&h=400&fit=crop"
+                        alt="Robotics competition" loading="lazy">
+                    <span class="gallery-card-badge">Competitions</span>
+                    <div class="gallery-card-overlay">
+                        <h4>State Robotics Championship</h4>
+                        <p>Our robots competing in the autonomous navigation track</p>
+                    </div>
+                </div>
+                <div class="gallery-card" data-category="competitions" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=600&h=400&fit=crop"
+                        alt="Team celebration" loading="lazy">
+                    <span class="gallery-card-badge">Competitions</span>
+                    <div class="gallery-card-overlay">
+                        <h4>Winners Celebration</h4>
+                        <p>Team ECHO celebrating after winning the regional tech fest</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Event Albums -->
+    <section class="features" style="background: var(--bg-secondary);">
+        <div class="container">
+            <h2 class="section-title">Event Albums</h2>
+            <p class="section-subtitle">Browse photos organized by event.</p>
+            <div class="features-grid" style="margin-top: var(--spacing-md);">
+                <div class="feature-card" style="cursor: pointer;">
+                    <div class="feature-icon">🏆</div>
+                    <h3>Hackathon 2025</h3>
+                    <p>48 photos from our 24-hour coding marathon</p>
+                </div>
+                <div class="feature-card" style="cursor: pointer;">
+                    <div class="feature-icon">🎤</div>
+                    <h3>Tech Summit 2025</h3>
+                    <p>120 photos from our annual conference</p>
+                </div>
+                <div class="feature-card" style="cursor: pointer;">
+                    <div class="feature-icon">🤖</div>
+                    <h3>Robotics Competition</h3>
+                    <p>65 photos from state championships</p>
+                </div>
+                <div class="feature-card" style="cursor: pointer;">
+                    <div class="feature-icon">🔧</div>
+                    <h3>Build Nights</h3>
+                    <p>85 photos from monthly project nights</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Highlights -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Video Highlights</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div
+                        style="background: var(--bg-tertiary); border-radius: var(--border-radius-sm); aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; margin-bottom: var(--spacing-md); overflow: hidden;">
+                        <img src="https://images.unsplash.com/photo-1492619375914-88005aa9e8fb?w=400&h=225&fit=crop"
+                            alt="Video thumbnail" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.7;">
+                    </div>
+                    <h3>ECHO Club Overview</h3>
+                    <p>A 3-minute introduction to who we are and what we do.</p>
+                </div>
+                <div class="feature-card">
+                    <div
+                        style="background: var(--bg-tertiary); border-radius: var(--border-radius-sm); aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; margin-bottom: var(--spacing-md); overflow: hidden;">
+                        <img src="https://images.unsplash.com/photo-1515187029135-18ee286d815b?w=400&h=225&fit=crop"
+                            alt="Video thumbnail" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.7;">
+                    </div>
+                    <h3>Hackathon 2025 Recap</h3>
+                    <p>Best moments from our biggest hackathon yet.</p>
+                </div>
+                <div class="feature-card">
+                    <div
+                        style="background: var(--bg-tertiary); border-radius: var(--border-radius-sm); aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; margin-bottom: var(--spacing-md); overflow: hidden;">
+                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&h=225&fit=crop"
+                            alt="Video thumbnail" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.7;">
+                    </div>
+                    <h3>Member Testimonials</h3>
+                    <p>Hear from members about their ECHO experience.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Submit Photos CTA -->
+    <section class="cta">
+        <div class="cta-content">
+            <h2>Have Photos to Share?</h2>
+            <p>Submit your ECHO Club photos and videos to be featured in our gallery</p>
+            <button class="btn-primary btn-large" style="background: white; color: var(--primary);">Submit
+                Photos</button>
+        </div>
+    </section>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+        <div id="lightbox-content" style="text-align: center;">
+            <img id="lightbox-img" class="lightbox-img" src="" alt="Gallery image">
+            <p id="lightbox-caption" class="lightbox-caption"></p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-links-bar">
+            <div class="container">
+                <a href="about.html">About Us</a>
+                <a href="history.html">History</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="events.html">Events</a>
+                <a href="alumni.html">Alumni</a>
+                <a href="donations.html">Support Us</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>ECHO Club</h4>
+                    <p>Electronics & Communication Heuristic Organisation.<br>
+                        Empowering students to innovate, create, and lead.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="members.html">Members</a></li>
+                        <li><a href="alumni.html">Alumni</a></li>
+                        <li><a href="donations.html">Support Us</a></li>
+                        <li><a href="announcements.html">News</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-link" title="Instagram">IG</a>
+                        <a href="#" class="social-link" title="Twitter">X</a>
+                        <a href="#" class="social-link" title="LinkedIn">IN</a>
+                        <a href="#" class="social-link" title="GitHub">GH</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 ECHO Club, JNTUACEA. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // ============================================
+        // GALLERY FILTER
+        // ============================================
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const galleryCards = document.querySelectorAll('.gallery-card');
+        const galleryCount = document.getElementById('galleryCount');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Toggle active
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filter = btn.getAttribute('data-filter');
+                let visibleCount = 0;
+
+                galleryCards.forEach(card => {
+                    const category = card.getAttribute('data-category');
+                    if (filter === 'all' || category === filter) {
+                        card.style.display = 'block';
+                        visibleCount++;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+
+                galleryCount.textContent = `Showing ${visibleCount} photos`;
+            });
+        });
+
+        // ============================================
+        // LIGHTBOX
+        // ============================================
+        function openLightbox(element) {
+            const img = element.querySelector('img');
+            const overlay = element.querySelector('.gallery-card-overlay');
+            const title = overlay ? overlay.querySelector('h4') : null;
+            const desc = overlay ? overlay.querySelector('p') : null;
+
+            const lightboxImg = document.getElementById('lightbox-img');
+            const lightboxCaption = document.getElementById('lightbox-caption');
+
+            // Use higher resolution version
+            lightboxImg.src = img.src.replace('w=600&h=400', 'w=1200&h=800');
+            lightboxImg.alt = img.alt;
+
+            if (title && desc) {
+                lightboxCaption.textContent = title.textContent + ' — ' + desc.textContent;
+            }
+
+            document.getElementById('lightbox').classList.add('active');
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+        }
+
+        // Close on ESC key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+
+        // Close on click outside
+        document.getElementById('lightbox').addEventListener('click', (e) => {
+            if (e.target.id === 'lightbox') closeLightbox();
+        });
+    </script>
+</body>
+
+</html>

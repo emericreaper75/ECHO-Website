@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Learn about ECHO Club's mission, vision, and values. We are the Electronics & Communication Heuristic Organisation at JNTUACEA.">
+    <title>About Us | ECHO Club</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        /* About-specific styles */
+        .about-hero {
+            background: var(--primary);
+            color: white;
+            padding: 60px var(--spacing-md) var(--spacing-xl);
+            text-align: center;
+            position: relative;
+        }
+
+        .about-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(196, 18, 47, 0.08) 0%, transparent 60%);
+        }
+
+        .about-hero h1 {
+            font-size: var(--font-size-4xl);
+            position: relative;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .about-hero p {
+            font-size: var(--font-size-lg);
+            color: rgba(255, 255, 255, 0.7);
+            position: relative;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Alternating mission section */
+        .about-mission {
+            padding: var(--spacing-xl) 0;
+            background: var(--bg-cream);
+        }
+
+        .mission-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin-bottom: 3rem;
+            padding-bottom: 3rem;
+            border-bottom: 1px solid var(--bg-tertiary);
+        }
+
+        .mission-row:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .mission-row.reverse {
+            direction: rtl;
+        }
+
+        .mission-row.reverse>* {
+            direction: ltr;
+        }
+
+        .mission-visual {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            border-radius: var(--border-radius-md);
+            height: 220px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mission-visual::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background: rgba(196, 18, 47, 0.15);
+            border-radius: 0 0 0 100%;
+        }
+
+        .mission-text h3 {
+            font-size: var(--font-size-2xl);
+            color: var(--primary);
+            margin-bottom: var(--spacing-sm);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .mission-text h3::before {
+            content: '';
+            width: 4px;
+            height: 28px;
+            background: var(--accent);
+            border-radius: 2px;
+            flex-shrink: 0;
+        }
+
+        .mission-text p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        /* Faculty Quote */
+        .faculty-quote {
+            padding: var(--spacing-xl) 0;
+            background: var(--primary);
+            color: white;
+        }
+
+        .quote-card {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .quote-avatar {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.15);
+            margin: 0 auto var(--spacing-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.5);
+            border: 3px solid var(--accent);
+        }
+
+        .quote-card blockquote {
+            font-size: var(--font-size-xl);
+            font-style: italic;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .quote-card cite {
+            display: block;
+            font-style: normal;
+            font-weight: 600;
+            color: var(--accent-light);
+        }
+
+        .quote-card cite span {
+            display: block;
+            font-weight: 400;
+            font-size: var(--font-size-sm);
+            color: rgba(255, 255, 255, 0.5);
+            margin-top: 0.25rem;
+        }
+
+        /* What We Do — accent cards */
+        .accent-card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-md);
+        }
+
+        .accent-card {
+            background: white;
+            border: 1px solid var(--bg-tertiary);
+            border-left: 5px solid var(--accent);
+            border-radius: var(--border-radius-sm);
+            padding: var(--spacing-lg);
+            transition: all 0.3s;
+        }
+
+        .accent-card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-3px);
+        }
+
+        .accent-card h4 {
+            font-size: var(--font-size-lg);
+            color: var(--primary);
+            margin-bottom: var(--spacing-xs);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .accent-card p {
+            color: var(--text-secondary);
+            font-size: var(--font-size-sm);
+            line-height: 1.6;
+        }
+
+        /* Milestones mini-timeline */
+        .milestones {
+            padding: var(--spacing-xl) 0;
+            background: var(--bg-cream);
+        }
+
+        .milestone-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-md);
+        }
+
+        .milestone-card {
+            text-align: center;
+            padding: var(--spacing-lg);
+            background: white;
+            border: 1px solid var(--bg-tertiary);
+            border-radius: var(--border-radius-sm);
+            transition: all 0.3s;
+        }
+
+        .milestone-card:hover {
+            box-shadow: var(--shadow-sm);
+            transform: translateY(-2px);
+        }
+
+        .milestone-year {
+            font-size: var(--font-size-3xl);
+            font-weight: 800;
+            color: var(--accent);
+            margin-bottom: 0.25rem;
+        }
+
+        .milestone-card h4 {
+            font-size: var(--font-size-base);
+            color: var(--primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .milestone-card p {
+            font-size: var(--font-size-sm);
+            color: var(--text-muted);
+        }
+
+        @media (max-width: 768px) {
+
+            .mission-row,
+            .mission-row.reverse {
+                grid-template-columns: 1fr;
+                direction: ltr;
+            }
+
+            .accent-card-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-text">ECHO</span>
+                <span class="logo-subtitle">Electronics & Communication Heuristic Organisation</span>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-dropdown">
+                    <a href="about.html" class="nav-link active">About ▾</a>
+                    <div class="nav-dropdown-content">
+                        <a href="about.html">About Us</a>
+                        <a href="history.html">Our History</a>
+                    </div>
+                </li>
+                <li class="nav-dropdown">
+                    <a href="team.html" class="nav-link">People ▾</a>
+                    <div class="nav-dropdown-content">
+                        <a href="team.html">Staff & Faculty</a>
+                        <a href="members.html">Members</a>
+                        <a href="alumni.html">Alumni</a>
+                    </div>
+                </li>
+                <li><a href="events.html" class="nav-link">Events</a></li>
+                <li><a href="announcements.html" class="nav-link">News</a></li>
+                <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+
+                <li><a href="donations.html" class="nav-link">Donate</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            <button class="mobile-toggle" id="mobileToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="about-hero">
+        <h1>About <span style="color: var(--accent-light);">ECHO Club</span></h1>
+        <p>Electronics & Communication Heuristic Organisation — Built by students, for students, since 2016
+        </p>
+    </section>
+
+    <!-- Mission Section — Alternating Layout -->
+    <section class="about-mission">
+        <div class="container">
+            <div class="mission-row">
+                <div class="mission-text">
+                    <h3>Our Vision</h3>
+                    <p>To be the premier student organization that bridges the gap between academic excellence and
+                        real-world innovation in electronics and computing. We envision a community where every student
+                        feels empowered to explore, experiment, and excel in the ever-evolving world of technology.</p>
+                </div>
+                <div class="mission-visual">🎯</div>
+            </div>
+
+            <div class="mission-row reverse">
+                <div class="mission-text">
+                    <h3>Our Values</h3>
+                    <p>Innovation, collaboration, inclusivity, hands-on learning, and continuous improvement guide
+                        everything we do. We believe that the best learning happens when students work together on
+                        real problems, supported by mentors who care about their growth.</p>
+                </div>
+                <div class="mission-visual">💡</div>
+            </div>
+
+            <div class="mission-row">
+                <div class="mission-text">
+                    <h3>Our Impact</h3>
+                    <p>Creating positive change through meaningful projects, STEM outreach, and preparing students for
+                        successful careers in technology. From national hackathon victories to community-serving IoT
+                        solutions, our members are making a difference that extends beyond the campus.</p>
+                </div>
+                <div class="mission-visual">🌍</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Faculty Quote -->
+    <section class="faculty-quote">
+        <div class="container">
+            <div class="quote-card">
+                <div class="quote-avatar">Photo</div>
+                <blockquote>
+                    "ECHO Club stands as a beacon of innovation and practical learning. We strive to bridge the gap
+                    between theoretical knowledge and real-world application, fostering a culture of excellence among
+                    our students."
+                </blockquote>
+                <cite>
+                    Dr. Rajesh Kumar
+                    <span>Faculty Advisor, ECHO Club</span>
+                </cite>
+            </div>
+        </div>
+    </section>
+
+    <!-- What We Do — Accent Cards -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">What We Do</h2>
+            <div class="accent-card-grid">
+                <div class="accent-card">
+                    <h4>⚡ Electronics Projects</h4>
+                    <p>Design and build circuits, PCBs, embedded systems, and IoT devices using professional-grade
+                        equipment in our dedicated lab.</p>
+                </div>
+                <div class="accent-card">
+                    <h4>💻 Software Development</h4>
+                    <p>Learn programming languages, web development, mobile apps, AI/ML, and cloud technologies through
+                        structured workshops.</p>
+                </div>
+                <div class="accent-card">
+                    <h4>🤖 Robotics</h4>
+                    <p>Build autonomous robots, drones, and mechatronic systems. Compete in regional and national
+                        robotics competitions.</p>
+                </div>
+                <div class="accent-card">
+                    <h4>🎓 Workshops & Training</h4>
+                    <p>Weekly workshops covering technical skills, professional development, and industry best practices
+                        with expert mentors.</p>
+                </div>
+                <div class="accent-card">
+                    <h4>🏆 Hackathons & Competitions</h4>
+                    <p>Host and participate in hackathons, CTF competitions, and engineering challenges at state and
+                        national levels.</p>
+                </div>
+                <div class="accent-card">
+                    <h4>🤝 Industry Connections</h4>
+                    <p>Networking events, guest speakers, company tours, and internship opportunities with top tech
+                        companies.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Facilities -->
+    <section class="features" style="background: var(--bg-secondary);">
+        <div class="container">
+            <h2 class="section-title">Our Facilities</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🔧</div>
+                    <h3>Electronics Lab</h3>
+                    <p>Fully equipped with oscilloscopes, signal generators, power supplies, soldering stations, and
+                        component inventory.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🖨️</div>
+                    <h3>Fabrication Center</h3>
+                    <p>3D printers, laser cutter, CNC machine, and PCB milling equipment for rapid prototyping.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🖥️</div>
+                    <h3>Computer Workstations</h3>
+                    <p>High-performance workstations with development tools, simulation software, and design
+                        applications.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📚</div>
+                    <h3>Resource Library</h3>
+                    <p>Technical books, online course subscriptions, and documentation for continuous learning.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Milestones -->
+    <section class="milestones">
+        <div class="container">
+            <h2 class="section-title section-title-center" style="display: block; text-align: center;">Key Milestones
+            </h2>
+            <div class="milestone-grid">
+                <div class="milestone-card">
+                    <div class="milestone-year">2016</div>
+                    <h4>Founded</h4>
+                    <p>Started with 12 founding members</p>
+                </div>
+                <div class="milestone-card">
+                    <div class="milestone-year">2018</div>
+                    <h4>First Hackathon Win</h4>
+                    <p>National-level recognition</p>
+                </div>
+                <div class="milestone-card">
+                    <div class="milestone-year">2020</div>
+                    <h4>Lab Established</h4>
+                    <p>Dedicated electronics lab opened</p>
+                </div>
+                <div class="milestone-card">
+                    <div class="milestone-year">2023</div>
+                    <h4>500+ Members</h4>
+                    <p>Largest technical club on campus</p>
+                </div>
+                <div class="milestone-card">
+                    <div class="milestone-year">2026</div>
+                    <h4>10 Years Strong</h4>
+                    <p>A decade of innovation and impact</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Links -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Explore More</h2>
+            <div class="features-grid">
+                <a href="history.html" class="feature-card" style="text-decoration: none;">
+                    <div class="feature-icon">📜</div>
+                    <h3>Our History</h3>
+                    <p>Learn about our 10-year journey from 12 founders to 500+ members.</p>
+                </a>
+                <a href="team.html" class="feature-card" style="text-decoration: none;">
+                    <div class="feature-icon">👥</div>
+                    <h3>Meet the Team</h3>
+                    <p>Our faculty advisors and student leadership team.</p>
+                </a>
+                <a href="gallery.html" class="feature-card" style="text-decoration: none;">
+                    <div class="feature-icon">📸</div>
+                    <h3>Photo Gallery</h3>
+                    <p>See our events, projects, and community in action.</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+        <div class="cta-content">
+            <h2>Ready to Build the Future?</h2>
+            <p>Join ECHO Club and be part of our innovative community</p>
+            <button class="btn-primary btn-large">Become a Member</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-links-bar">
+            <div class="container">
+                <a href="about.html">About Us</a>
+                <a href="history.html">History</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="events.html">Events</a>
+                <a href="alumni.html">Alumni</a>
+                <a href="donations.html">Support Us</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>ECHO Club</h4>
+                    <p>Electronics & Communication Heuristic Organisation.<br>
+                        Empowering students to innovate, create, and lead.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="members.html">Members</a></li>
+                        <li><a href="alumni.html">Alumni</a></li>
+                        <li><a href="donations.html">Support Us</a></li>
+                        <li><a href="announcements.html">News</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-link" title="Instagram">IG</a>
+                        <a href="#" class="social-link" title="Twitter">X</a>
+                        <a href="#" class="social-link" title="LinkedIn">IN</a>
+                        <a href="#" class="social-link" title="GitHub">GH</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 ECHO Club, JNTUACEA. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

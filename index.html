@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="ECHO Club - Electronics and Communication Heuristic Organisation at JNTUACEA. Join our vibrant student community dedicated to innovation and technology.">
+    <title>ECHO Club | Electronics and Communication Heuristic Organisation</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <a href="mailto:echoclub@jntuacea.ac.in">echoclub@jntuacea.ac.in</a>
+            <span>|</span>
+            <a href="#">Student Login</a>
+            <span>|</span>
+            <a href="#">Faculty Login</a>
+            <span>|</span>
+            <a href="alumni.html">Alumni Portal</a>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-text">ECHO</span>
+                <span class="logo-subtitle">Electronics & Communication Heuristic Organisation</span>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html" class="nav-link active">Home</a></li>
+                <li class="nav-dropdown">
+                    <a href="about.html" class="nav-link">About ▾</a>
+                    <div class="nav-dropdown-content">
+                        <a href="about.html">About Us</a>
+                        <a href="history.html">Our History</a>
+                    </div>
+                </li>
+                <li class="nav-dropdown">
+                    <a href="team.html" class="nav-link">People ▾</a>
+                    <div class="nav-dropdown-content">
+                        <a href="team.html">Staff & Faculty</a>
+                        <a href="members.html">Members</a>
+                        <a href="alumni.html">Alumni</a>
+                    </div>
+                </li>
+                <li><a href="events.html" class="nav-link">Events</a></li>
+                <li><a href="announcements.html" class="nav-link">News</a></li>
+                <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+
+                <li><a href="donations.html" class="nav-link">Donate</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            <button class="mobile-toggle" id="mobileToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Slideshow -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-slideshow" id="heroSlideshow">
+                <!-- Slide 1 -->
+                <div class="hero-slide active">
+                    <div class="slide-bg"
+                        style="background: url('https://images.unsplash.com/photo-1581091012184-7e0cdfbb6797?w=1600&q=80') center/cover no-repeat;">
+                    </div>
+                    <div class="slide-overlay"></div>
+                    <div class="slide-content">
+                        <h2>AI Workshop Series Registration Open</h2>
+                        <p>Join our comprehensive 4-week workshop on AI and machine learning fundamentals.</p>
+                        <a href="events.html#activity-detail">Read More →</a>
+                    </div>
+                </div>
+                <!-- Slide 2 -->
+                <div class="hero-slide">
+                    <div class="slide-bg"
+                        style="background: url('https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?w=1600&q=80') center/cover no-repeat;">
+                    </div>
+                    <div class="slide-overlay"></div>
+                    <div class="slide-content">
+                        <h2>ECHO Team Wins National Hackathon 2025</h2>
+                        <p>Our students secured 1st place at the National Engineering Hackathon with an IoT solution.
+                        </p>
+                        <a href="events.html#activity-detail">Read More →</a>
+                    </div>
+                </div>
+                <!-- Slide 3 -->
+                <div class="hero-slide">
+                    <div class="slide-bg"
+                        style="background: url('https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=1600&q=80') center/cover no-repeat;">
+                    </div>
+                    <div class="slide-overlay"></div>
+                    <div class="slide-content">
+                        <h2>New Electronics Lab Equipment Installed</h2>
+                        <p>State-of-the-art oscilloscopes and logic analyzers now available for members.</p>
+                        <a href="about.html">Read More →</a>
+                    </div>
+                </div>
+                <!-- Slide 4 -->
+                <div class="hero-slide">
+                    <div class="slide-bg"
+                        style="background: url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1600&q=80') center/cover no-repeat;">
+                    </div>
+                    <div class="slide-overlay"></div>
+                    <div class="slide-content">
+                        <h2>Annual Technical Fest — ECHOVERSE 2026</h2>
+                        <p>Mark your calendars for our biggest event of the year. Registrations opening soon!</p>
+                        <a href="events.html">Read More →</a>
+                    </div>
+                </div>
+                <!-- Slide 5 -->
+                <div class="hero-slide">
+                    <div class="slide-bg"
+                        style="background: url('https://images.unsplash.com/photo-1517420704952-d9f39e95b43e?w=1600&q=80') center/cover no-repeat;">
+                    </div>
+                    <div class="slide-overlay"></div>
+                    <div class="slide-content">
+                        <h2>PCB Design Workshop — Hands-On Learning</h2>
+                        <p>Learn professional PCB design techniques using industry-standard software.</p>
+                        <a href="events.html#activity-detail">Read More →</a>
+                    </div>
+                </div>
+                <!-- Slide 6 -->
+                <div class="hero-slide">
+                    <div class="slide-bg"
+                        style="background: url('https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=1600&q=80') center/cover no-repeat;">
+                    </div>
+                    <div class="slide-overlay"></div>
+                    <div class="slide-content">
+                        <h2>Alumni Meet & Greet — Reconnect with ECHO</h2>
+                        <p>Join us for an evening of reconnection, mentoring, and inspiration with our alumni network.
+                        </p>
+                        <a href="alumni.html">Read More →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide Indicators -->
+            <div class="slide-indicators" id="slideIndicators">
+                <div class="slide-indicator active" data-slide="0"></div>
+                <div class="slide-indicator" data-slide="1"></div>
+                <div class="slide-indicator" data-slide="2"></div>
+                <div class="slide-indicator" data-slide="3"></div>
+                <div class="slide-indicator" data-slide="4"></div>
+                <div class="slide-indicator" data-slide="5"></div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ECHO Overview -->
+    <section class="overview-section">
+        <div class="container">
+            <div class="overview-grid">
+                <div class="overview-text">
+                    <h2 class="section-title">ECHO Overview</h2>
+                    <p>
+                        The Electronics and Communication Heuristic Organisation (ECHO) was established to foster a
+                        vibrant
+                        community of students passionate about electronics, computing, and emerging technologies at
+                        JNTUACEA. Through hands-on projects, workshops, and collaborative innovation, we bridge the gap
+                        between academic knowledge and real-world application.
+                    </p>
+                    <p>
+                        The club offers workshops, hackathons, guest lectures, and project mentorship across a wide
+                        range
+                        of technical domains. With access to a fully equipped electronics lab, fabrication center, and
+                        computer workstations, members gain practical skills that prepare them for successful careers in
+                        technology.
+                    </p>
+                </div>
+                <div class="overview-links">
+                    <div class="overview-link-box">
+                        <h4>For Students</h4>
+                        <ul>
+                            <li><a href="events.html">Workshops</a></li>
+                            <li><a href="events.html">Hackathons</a></li>
+                            <li><a href="gallery.html">Gallery</a></li>
+                        </ul>
+                    </div>
+                    <div class="overview-link-box">
+                        <h4>Activities</h4>
+                        <ul>
+                            <li><a href="events.html">Events</a></li>
+                            <li><a href="announcements.html">Announcements</a></li>
+                            <li><a href="gallery.html">Resources</a></li>
+                        </ul>
+                    </div>
+                    <div class="overview-link-box">
+                        <h4>People</h4>
+                        <ul>
+                            <li><a href="team.html">Faculty & Staff</a></li>
+                            <li><a href="members.html">Members</a></li>
+                            <li><a href="alumni.html">Alumni Network</a></li>
+                        </ul>
+                    </div>
+                    <div class="overview-link-box">
+                        <h4>Connect</h4>
+                        <ul>
+                            <li><a href="contact.html">Contact Us</a></li>
+                            <li><a href="donations.html">Support Us</a></li>
+                            <li><a href="history.html">Our History</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Compact Info: Announcements / Events / Circulars -->
+    <section class="compact-info">
+        <div class="container">
+            <div class="compact-info-header">
+                <h3>Events & Announcements</h3>
+                <a href="events.html">READ ALL →</a>
+            </div>
+            <div class="compact-info-grid">
+                <!-- Announcements Column -->
+                <div class="compact-info-column">
+                    <div class="compact-info-column-header">
+                        Announcements
+                        <a href="announcements.html">View All</a>
+                    </div>
+                    <ul class="compact-info-list">
+                        <li>
+                            <a href="events.html#activity-detail" class="compact-info-item">
+                                <div class="item-date">15 Feb 2026</div>
+                                <div class="item-title">AI Workshop Series Registration Open</div>
+                                <div class="item-summary">Join our 4-week workshop on AI and machine learning
+                                    fundamentals.</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="events.html#activity-detail" class="compact-info-item">
+                                <div class="item-date">12 Feb 2026</div>
+                                <div class="item-title">New Lab Equipment Installed</div>
+                                <div class="item-summary">Oscilloscopes and logic analyzers now available in the
+                                    electronics lab.</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="events.html#activity-detail" class="compact-info-item">
+                                <div class="item-date">08 Feb 2026</div>
+                                <div class="item-title">Membership Drive 2026</div>
+                                <div class="item-summary">Open registration for new members. Submit applications before
+                                    February 28th.</div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Events Column -->
+                <div class="compact-info-column">
+                    <div class="compact-info-column-header">
+                        Upcoming Events
+                        <a href="events.html">View All</a>
+                    </div>
+                    <ul class="compact-info-list">
+                        <li>
+                            <a href="events.html#activity-detail" class="compact-info-item">
+                                <div class="item-date">20 Feb 2026</div>
+                                <div class="item-title">Tech Talk: IoT in Smart Cities</div>
+                                <div class="item-summary">Guest lecture by Dr. Priya Sharma on IoT implementations.
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="events.html#activity-detail" class="compact-info-item">
+                                <div class="item-date">25 Feb 2026</div>
+                                <div class="item-title">Annual Hackathon 2026</div>
+                                <div class="item-summary">24-hour coding marathon with exciting challenges and prizes.
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="events.html#activity-detail" class="compact-info-item">
+                                <div class="item-date">05 Mar 2026</div>
+                                <div class="item-title">PCB Design Workshop</div>
+                                <div class="item-summary">Learn professional PCB design using industry-standard
+                                    software.</div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Circulars Column -->
+                <div class="compact-info-column">
+                    <div class="compact-info-column-header">
+                        Circulars
+                        <a href="events.html">View All</a>
+                    </div>
+                    <ul class="compact-info-list">
+                        <li>
+                            <a href="events.html#activity-detail" class="compact-info-item">
+                                <div class="item-date">10 Feb 2026</div>
+                                <div class="item-title">Lab Safety Guidelines Update</div>
+                                <div class="item-summary">Updated safety protocols for electronics lab usage.</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="events.html#activity-detail" class="compact-info-item">
+                                <div class="item-date">05 Feb 2026</div>
+                                <div class="item-title">Project Submission Deadlines</div>
+                                <div class="item-summary">Semester project submissions due March 15th.</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="events.html#activity-detail" class="compact-info-item">
+                                <div class="item-date">01 Feb 2026</div>
+                                <div class="item-title">Updated Code of Conduct</div>
+                                <div class="item-summary">New member code of conduct effective immediately.</div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Activities -->
+    <section class="happenings">
+        <div class="container">
+            <h2 class="section-title section-title-center">Our Activities</h2>
+            <p class="section-subtitle" style="text-align: center; margin: -1rem auto 0;">Explore the diverse range of
+                activities and initiatives at ECHO Club</p>
+            <div class="happenings-grid">
+                <div class="happening-item">
+                    <div class="happening-img">🔧</div>
+                    <div class="happening-title">Workshops</div>
+                </div>
+                <div class="happening-item">
+                    <div class="happening-img">🏆</div>
+                    <div class="happening-title">Competitions</div>
+                </div>
+                <div class="happening-item">
+                    <div class="happening-img">💡</div>
+                    <div class="happening-title">Projects</div>
+                </div>
+                <div class="happening-item">
+                    <div class="happening-img">🌐</div>
+                    <div class="happening-title">Community</div>
+                </div>
+                <div class="happening-item">
+                    <div class="happening-img">📚</div>
+                    <div class="happening-title">Learning</div>
+                </div>
+                <div class="happening-item">
+                    <div class="happening-img">🚀</div>
+                    <div class="happening-title">Innovation</div>
+                </div>
+                <div class="happening-item">
+                    <div class="happening-img">🤝</div>
+                    <div class="happening-title">Collaboration</div>
+                </div>
+                <div class="happening-item">
+                    <div class="happening-img">🎓</div>
+                    <div class="happening-title">Mentorship</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Highlights Carousel -->
+    <section class="highlights-section">
+        <div class="container">
+            <div class="highlights-header">
+                <h2 class="section-title" style="margin-bottom: 0;">Project Highlights</h2>
+                <div class="highlights-nav">
+                    <button id="highlightsPrev" aria-label="Previous">‹</button>
+                    <button id="highlightsNext" aria-label="Next">›</button>
+                </div>
+            </div>
+            <div class="highlights-track-wrapper">
+                <div class="highlights-track" id="highlightsTrack">
+                    <div class="highlight-card">
+                        <h4>Smart Irrigation System using IoT</h4>
+                        <p>An automated irrigation controller that monitors soil moisture and weather data to optimize
+                            water usage for agricultural fields.</p>
+                        <a href="events.html#activity-detail">Read more →</a>
+                    </div>
+                    <div class="highlight-card">
+                        <h4>AI-Powered Attendance System</h4>
+                        <p>Facial recognition-based attendance system built using OpenCV and deep learning models for
+                            real-time classroom tracking.</p>
+                        <a href="events.html#activity-detail">Read more →</a>
+                    </div>
+                    <div class="highlight-card">
+                        <h4>Autonomous Line-Following Robot</h4>
+                        <p>A competition-winning robot with PID control and sensor fusion for precise path tracking at
+                            national robotics events.</p>
+                        <a href="events.html#activity-detail">Read more →</a>
+                    </div>
+                    <div class="highlight-card">
+                        <h4>Portable Low-Cost ECG Monitor</h4>
+                        <p>A wearable ECG monitoring device designed for rural healthcare, transmitting real-time data
+                            to medical professionals via mobile.</p>
+                        <a href="events.html#activity-detail">Read more →</a>
+                    </div>
+                    <div class="highlight-card">
+                        <h4>Home Automation via Voice Control</h4>
+                        <p>An ESP32-based smart home system integrated with Alexa for voice-controlled lighting, fans,
+                            and appliance management.</p>
+                        <a href="events.html#activity-detail">Read more →</a>
+                    </div>
+                    <div class="highlight-card">
+                        <h4>Solar Energy Monitoring Dashboard</h4>
+                        <p>Real-time monitoring dashboard for solar panel installations, tracking efficiency, power
+                            output, and environmental impact.</p>
+                        <a href="events.html#activity-detail">Read more →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number" data-target="500">0</div>
+                    <div class="stat-label">Active Members</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" data-target="50">0</div>
+                    <div class="stat-label">Events Hosted</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" data-target="25">0</div>
+                    <div class="stat-label">Projects Launched</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" data-target="10">0</div>
+                    <div class="stat-label">Years Active</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Join ECHO? -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Why Join ECHO Club?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Electronics Lab</h3>
+                    <p>Access state-of-the-art electronics equipment and build your own projects from circuits to
+                        robots.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💻</div>
+                    <h3>Coding Workshops</h3>
+                    <p>Learn programming languages, software development, and cutting-edge technologies from experts.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔧</div>
+                    <h3>Hands-On Projects</h3>
+                    <p>Work on real-world projects including IoT devices, embedded systems, and innovative solutions.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌐</div>
+                    <h3>Tech Community</h3>
+                    <p>Connect with fellow tech enthusiasts, mentors, and industry professionals who share your passion.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="cta-content">
+            <h2>Ready to Build the Future?</h2>
+            <p>Join ECHO Club today and be part of something extraordinary</p>
+            <button class="btn-primary btn-large">Become a Member</button>
+        </div>
+    </section>
+
+    <!-- Contributors Section -->
+    <section class="contributors">
+        <div class="container">
+            <h2 class="section-title section-title-center" style="display:block; text-align:center;">Website
+                Contributors</h2>
+            <p class="section-subtitle" style="text-align: center; margin: -1rem auto var(--spacing-lg);">Special thanks
+                to our amazing contributors who helped build this website</p>
+            <div class="contributors-grid">
+                <div class="contributor-card">
+                    <div class="contributor-avatar">AJ</div>
+                    <div class="contributor-info">
+                        <div class="contributor-name">Alex Johnson</div>
+                        <div class="contributor-role">Lead Developer</div>
+                    </div>
+                </div>
+                <div class="contributor-card">
+                    <div class="contributor-avatar">MC</div>
+                    <div class="contributor-info">
+                        <div class="contributor-name">Maya Chen</div>
+                        <div class="contributor-role">UI Designer</div>
+                    </div>
+                </div>
+                <div class="contributor-card">
+                    <div class="contributor-avatar">RK</div>
+                    <div class="contributor-info">
+                        <div class="contributor-name">Ryan Kumar</div>
+                        <div class="contributor-role">Backend Dev</div>
+                    </div>
+                </div>
+                <div class="contributor-card">
+                    <div class="contributor-avatar">SP</div>
+                    <div class="contributor-info">
+                        <div class="contributor-name">Sofia Patel</div>
+                        <div class="contributor-role">Content Writer</div>
+                    </div>
+                </div>
+                <div class="contributor-card">
+                    <div class="contributor-avatar">JL</div>
+                    <div class="contributor-info">
+                        <div class="contributor-name">James Lee</div>
+                        <div class="contributor-role">Graphics</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <!-- Quick links bar -->
+        <div class="footer-links-bar">
+            <div class="container">
+                <a href="about.html">About Us</a>
+                <a href="history.html">History</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="events.html">Events</a>
+                <a href="alumni.html">Alumni</a>
+                <a href="donations.html">Support Us</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>ECHO Club</h4>
+                    <p>Electronics and Communication Heuristic Organisation.<br>
+                        Empowering students to innovate, create, and lead in the world of technology.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="members.html">Members</a></li>
+                        <li><a href="alumni.html">Alumni</a></li>
+                        <li><a href="donations.html">Support Us</a></li>
+                        <li><a href="announcements.html">News</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-link" title="Instagram">IG</a>
+                        <a href="#" class="social-link" title="Twitter">X</a>
+                        <a href="#" class="social-link" title="LinkedIn">IN</a>
+                        <a href="#" class="social-link" title="GitHub">GH</a>
+                    </div>
+                    <p style="margin-top: 1rem; font-size: 0.8rem;">
+                        ECHO Club, JNTUACEA<br>
+                        Anantapur, Andhra Pradesh, India
+                    </p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 ECHO Club, JNTUACEA. All rights reserved. Designed & developed by ECHO Club members.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

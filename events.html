@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Discover upcoming ECHO Club events, workshops, hackathons, and activities. Join us for exciting learning opportunities.">
+    <title>Events | ECHO Club</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        /* Events page specific styles */
+        .event-card-date {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 0.4rem 0.85rem;
+            border-radius: var(--border-radius-sm);
+            font-size: var(--font-size-sm);
+            font-weight: 600;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .event-card-meta {
+            margin-top: var(--spacing-md);
+            color: var(--text-muted);
+            font-size: var(--font-size-sm);
+        }
+
+        .event-card-meta p {
+            margin-bottom: 0.2rem;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-text">ECHO</span>
+                <span class="logo-subtitle">Electronics & Communication Heuristic Organisation</span>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-dropdown">
+                    <a href="about.html" class="nav-link">About ▾</a>
+                    <div class="nav-dropdown-content">
+                        <a href="about.html">About Us</a>
+                        <a href="history.html">Our History</a>
+                    </div>
+                </li>
+                <li class="nav-dropdown">
+                    <a href="team.html" class="nav-link">People ▾</a>
+                    <div class="nav-dropdown-content">
+                        <a href="team.html">Staff & Faculty</a>
+                        <a href="members.html">Members</a>
+                        <a href="alumni.html">Alumni</a>
+                    </div>
+                </li>
+                <li><a href="events.html" class="nav-link active">Events</a></li>
+                <li><a href="announcements.html" class="nav-link">News</a></li>
+                <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+
+                <li><a href="donations.html" class="nav-link">Donate</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            <button class="mobile-toggle" id="mobileToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <h1>Upcoming <span class="gradient-text">Events</span></h1>
+        <p>Join us for workshops, hackathons, and community activities</p>
+    </section>
+
+    <!-- Featured Event -->
+    <section class="cta">
+        <div class="cta-content">
+            <span class="announcement-badge" style="background: rgba(255,255,255,0.2); color: white;">🔥 Featured
+                Event</span>
+            <h2 style="margin-top: var(--spacing-sm);">Hackathon 2026</h2>
+            <p>February 25-26 • 24-hour coding marathon with ₹50,000 in prizes</p>
+            <button class="btn-primary btn-large" style="background: white; color: var(--primary);">Register
+                Now</button>
+        </div>
+    </section>
+
+    <!-- This Month's Events -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">This Month's Events</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <span class="event-card-date">Feb 15, 2026</span>
+                    <h3>AI Workshop Series</h3>
+                    <p>Learn the fundamentals of machine learning and build your first AI model. Perfect for beginners!
+                    </p>
+                    <div class="event-card-meta">
+                        <p>📍 Tech Lab, Room 301</p>
+                        <p>⏰ 6:00 PM - 8:00 PM</p>
+                    </div>
+                    <button class="btn-secondary" style="margin-top: var(--spacing-md); width: 100%;">Register
+                        Now</button>
+                </div>
+
+                <div class="feature-card">
+                    <span class="event-card-date">Feb 18, 2026</span>
+                    <h3>PCB Design Workshop</h3>
+                    <p>Hands-on workshop on designing printed circuit boards using KiCad. Create your first PCB!</p>
+                    <div class="event-card-meta">
+                        <p>📍 Electronics Lab</p>
+                        <p>⏰ 5:00 PM - 7:30 PM</p>
+                    </div>
+                    <button class="btn-secondary" style="margin-top: var(--spacing-md); width: 100%;">Register
+                        Now</button>
+                </div>
+
+                <div class="feature-card">
+                    <span class="event-card-date">Feb 20, 2026</span>
+                    <h3>Tech Talk: IoT in Smart Cities</h3>
+                    <p>Guest lecture by Dr. Priya Sharma on IoT implementations for smart urban infrastructure.</p>
+                    <div class="event-card-meta">
+                        <p>📍 Auditorium A</p>
+                        <p>⏰ 5:30 PM - 7:00 PM</p>
+                    </div>
+                    <button class="btn-secondary" style="margin-top: var(--spacing-md); width: 100%;">Register
+                        Now</button>
+                </div>
+
+                <div class="feature-card">
+                    <span class="event-card-date">Feb 22, 2026</span>
+                    <h3>Arduino Build Night</h3>
+                    <p>Monthly project night! Bring your ideas and work on Arduino-based projects with help from
+                        mentors.</p>
+                    <div class="event-card-meta">
+                        <p>📍 Innovation Lab</p>
+                        <p>⏰ 6:00 PM - 10:00 PM</p>
+                    </div>
+                    <button class="btn-secondary" style="margin-top: var(--spacing-md); width: 100%;">Register
+                        Now</button>
+                </div>
+
+                <div class="feature-card">
+                    <span class="event-card-date">Feb 25-26, 2026</span>
+                    <h3>Hackathon 2026</h3>
+                    <p>24-hour coding challenge with amazing prizes! Team up to solve real-world problems.</p>
+                    <div class="event-card-meta">
+                        <p>📍 Engineering Building</p>
+                        <p>⏰ All Day Event</p>
+                    </div>
+                    <button class="btn-primary" style="margin-top: var(--spacing-md); width: 100%;">Register
+                        Now</button>
+                </div>
+
+                <div class="feature-card">
+                    <span class="event-card-date">Feb 28, 2026</span>
+                    <h3>Career Development Panel</h3>
+                    <p>Hear from successful alumni about their career journeys and get valuable advice.</p>
+                    <div class="event-card-meta">
+                        <p>📍 Auditorium A</p>
+                        <p>⏰ 5:30 PM - 7:30 PM</p>
+                    </div>
+                    <button class="btn-secondary" style="margin-top: var(--spacing-md); width: 100%;">Register
+                        Now</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Event Types -->
+    <section class="features" style="background: var(--bg-secondary);">
+        <div class="container">
+            <h2 class="section-title">Event Types</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">💻</div>
+                    <h3>Workshops</h3>
+                    <p>Hands-on learning sessions covering electronics, programming, and professional skills.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎤</div>
+                    <h3>Guest Speakers</h3>
+                    <p>Inspiring talks from industry leaders, entrepreneurs, and researchers.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🏆</div>
+                    <h3>Competitions</h3>
+                    <p>Hackathons, robotics competitions, CTFs, and engineering challenges.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔧</div>
+                    <h3>Build Nights</h3>
+                    <p>Monthly project sessions with mentors and access to lab equipment.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎉</div>
+                    <h3>Social Events</h3>
+                    <p>Game nights, networking mixers, and team-building activities.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🏢</div>
+                    <h3>Company Tours</h3>
+                    <p>Visit tech companies and see real engineering in action.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recurring Events -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Recurring Events</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>Weekly Meetings</h3>
+                    <p style="color: var(--accent); margin-bottom: var(--spacing-sm); font-weight: 600;">Every
+                        Wednesday, 6:00 PM</p>
+                    <p>General club meetings with announcements, tech talks, and project updates.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Office Hours</h3>
+                    <p style="color: var(--accent); margin-bottom: var(--spacing-sm); font-weight: 600;">Mon-Thu, 2:00
+                        PM - 5:00 PM</p>
+                    <p>Drop in for help with projects, homework, or just to hang out in the lab.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Build Nights</h3>
+                    <p style="color: var(--accent); margin-bottom: var(--spacing-sm); font-weight: 600;">Last Saturday
+                        of each month</p>
+                    <p>Extended lab hours for intensive project work with mentors available.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Activity Detail Section (anchor for click-through from homepage) -->
+    <section class="activity-detail" id="activity-detail">
+        <div class="container">
+            <h2 class="section-title">Activity Details</h2>
+            <p class="section-subtitle">Detailed information about our latest announcements, events, and circulars.</p>
+
+            <div class="activity-detail-card">
+                <h3>AI Workshop Series Registration Open</h3>
+                <div class="activity-meta">
+                    <span>📅 February 15, 2026</span>
+                    <span>📍 Tech Lab, Room 301</span>
+                    <span>⏰ 6:00 PM - 8:00 PM</span>
+                </div>
+                <p>Join our comprehensive 4-week AI workshop covering machine learning fundamentals, neural networks,
+                    natural language processing, and computer vision. No prior ML experience needed — we start from
+                    scratch.
+                    Each session includes theory, hands-on coding, and take-home exercises. Participants will build and
+                    deploy their own AI model by the end of the series. Certificates provided upon completion.</p>
+            </div>
+
+            <div class="activity-detail-card">
+                <h3>ECHO Team Wins National Hackathon 2025</h3>
+                <div class="activity-meta">
+                    <span>📅 January 28, 2026</span>
+                    <span>🏆 National Level Achievement</span>
+                </div>
+                <p>Our team of four students — Aarav Reddy, Sneha Kumari, Vikram Patel, and Divya Sharma — secured 1st
+                    place
+                    at the National Engineering Hackathon 2025 held at IIT Hyderabad. Their winning project, "AquaGuard
+                    IoT",
+                    is an intelligent water quality monitoring system for rural communities that uses low-cost sensors
+                    and
+                    cellular connectivity to detect contamination in real-time.</p>
+            </div>
+
+            <div class="activity-detail-card">
+                <h3>Tech Talk: IoT in Smart Cities</h3>
+                <div class="activity-meta">
+                    <span>📅 February 20, 2026</span>
+                    <span>📍 Auditorium A</span>
+                    <span>🎤 Dr. Priya Sharma, IIT Delhi</span>
+                </div>
+                <p>Dr. Priya Sharma, a leading researcher in urban IoT infrastructure, will share her insights on how
+                    Internet of Things technology is transforming cities across India. Topics include smart traffic
+                    management,
+                    environmental monitoring, waste management automation, and the challenges of deploying IoT at urban
+                    scale.
+                    Open to all students and faculty. Q&A session follows the lecture.</p>
+            </div>
+
+            <div class="activity-detail-card">
+                <h3>Lab Safety Guidelines Update</h3>
+                <div class="activity-meta">
+                    <span>📅 February 10, 2026</span>
+                    <span>📋 Circular</span>
+                </div>
+                <p>Updated safety protocols for electronics lab usage are now in effect. Key changes include mandatory
+                    safety goggles when soldering, new fire extinguisher locations, updated first-aid procedures, and
+                    mandatory safety orientation for all new members before lab access is granted. Please review the
+                    full
+                    guidelines document available at the lab entrance.</p>
+            </div>
+
+            <div class="activity-detail-card">
+                <h3>PCB Design Workshop</h3>
+                <div class="activity-meta">
+                    <span>📅 March 5, 2026</span>
+                    <span>📍 Electronics Lab</span>
+                    <span>⏰ 5:00 PM - 7:30 PM</span>
+                </div>
+                <p>Learn professional PCB design techniques using KiCad, the industry-standard open-source EDA tool.
+                    This hands-on workshop covers schematic capture, footprint assignment, PCB layout, design rule
+                    checks,
+                    and generating Gerber files for manufacturing. Each participant will design their own PCB during the
+                    session.
+                    Laptops required — KiCad installation instructions will be sent before the event.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter CTA -->
+    <section class="cta">
+        <div class="cta-content">
+            <h2>Never Miss an Event</h2>
+            <p>Subscribe to our newsletter for updates on upcoming events and activities</p>
+            <div style="max-width: 500px; margin: var(--spacing-md) auto 0; display: flex; gap: var(--spacing-sm);">
+                <input type="email" placeholder="Enter your email" class="form-input"
+                    style="flex: 1; border: none; border-radius: var(--border-radius-sm);">
+                <button class="btn-primary" style="background: white; color: var(--primary);">Subscribe</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-links-bar">
+            <div class="container">
+                <a href="about.html">About Us</a>
+                <a href="history.html">History</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="events.html">Events</a>
+                <a href="alumni.html">Alumni</a>
+                <a href="donations.html">Support Us</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>ECHO Club</h4>
+                    <p>Electronics & Communication Heuristic Organisation.<br>
+                        Empowering students to innovate, create, and lead.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="members.html">Members</a></li>
+                        <li><a href="alumni.html">Alumni</a></li>
+                        <li><a href="donations.html">Support Us</a></li>
+                        <li><a href="announcements.html">News</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-link" title="Instagram">IG</a>
+                        <a href="#" class="social-link" title="Twitter">X</a>
+                        <a href="#" class="social-link" title="LinkedIn">IN</a>
+                        <a href="#" class="social-link" title="GitHub">GH</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 ECHO Club, JNTUACEA. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
