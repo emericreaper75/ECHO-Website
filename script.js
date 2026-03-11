@@ -19,12 +19,62 @@ window.addEventListener('scroll', () => {
 const mobileToggle = document.getElementById('mobileToggle');
 const navLinks = document.getElementById('navLinks');
 
+function setMobileNavTop() {
+    // Position the fixed dropdown exactly below the navbar (works on all pages)
+    if (navbar && navLinks) {
+        const navBottom = navbar.getBoundingClientRect().bottom;
+        navLinks.style.top = navBottom + 'px';
+        navLinks.style.maxHeight = (window.innerHeight - navBottom) + 'px';
+    }
+}
+
 if (mobileToggle) {
-    mobileToggle.addEventListener('click', () => {
+    mobileToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        setMobileNavTop(); // recalculate every time
         navLinks.classList.toggle('active');
         mobileToggle.classList.toggle('active');
     });
 }
+
+// Mobile: handle dropdown sub-menus via click/tap
+document.querySelectorAll('.nav-dropdown > .nav-link').forEach(link => {
+    link.addEventListener('click', (e) => {
+        // Only intercept on mobile (hamburger visible)
+        if (window.innerWidth <= 768) {
+            e.preventDefault();
+            const parent = link.closest('.nav-dropdown');
+            // Close other open dropdowns
+            document.querySelectorAll('.nav-dropdown.active').forEach(d => {
+                if (d !== parent) d.classList.remove('active');
+            });
+            parent.classList.toggle('active');
+        }
+    });
+});
+
+// Close mobile menu when a non-dropdown nav link is clicked
+document.querySelectorAll('.nav-links a:not(.nav-dropdown .nav-link)').forEach(link => {
+    link.addEventListener('click', () => {
+        if (navLinks.classList.contains('active')) {
+            navLinks.classList.remove('active');
+            mobileToggle.classList.remove('active');
+            document.querySelectorAll('.nav-dropdown.active').forEach(d => d.classList.remove('active'));
+        }
+    });
+});
+
+// Close nav when clicking anywhere outside
+document.addEventListener('click', (e) => {
+    if (navLinks && navLinks.classList.contains('active')) {
+        if (!navLinks.contains(e.target) && !mobileToggle.contains(e.target)) {
+            navLinks.classList.remove('active');
+            mobileToggle.classList.remove('active');
+            document.querySelectorAll('.nav-dropdown.active').forEach(d => d.classList.remove('active'));
+        }
+    }
+});
+
 
 // ============================================
 // HERO SLIDESHOW
